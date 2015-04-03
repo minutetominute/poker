@@ -22,15 +22,23 @@ class Deck
     all
   end
 
-  def take(n)
+  def draw(n)
     raise "Can't draw more than 3 cards" if n > 3
-    cards.shift(n)
+    take(n)
   end
 
   def return(cards)
     self.cards.concat(cards)
   end
 
+  def deal
+    cards.take(5)
+  end
 
+  private
+
+  def take(n)
+    cards.shift(n)
+  end
 
 end
