@@ -23,7 +23,14 @@ class Deck
   end
 
   def take(n)
+    raise "Can't draw more than 3 cards" if n > 3
     cards.shift(n)
   end
+
+  def return(cards)
+    self.cards.concat(cards)
+  end
+
+
 
 end
