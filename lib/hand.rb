@@ -27,18 +27,18 @@ class Hand
   end
 
   def tie_breaker(other_hand)
+    if self.flush? || self.straight?
+      self.high_value <=> other_hand.value
+    elsif self.quad?
 
+    end
   end
 
   def ranking_index
-    POKER_HANDS.index(ranking) + 1
-  end
-
-  def ranking
     POKER_HANDS.reverse.each do |poker_hand|
       method_name = (poker_hand.to_s + "?").to_sym
       if self.send(method_name)
-        return poker_hand + 1
+        return POKER_HANDS.index(poker_hand) + 1
       end
     end
     0
@@ -83,8 +83,7 @@ class Hand
     end
   end
 
-  #not robust, does not cover complicated cases
-  def high_card
+  def high_value
     strip_suits.max
   end
 

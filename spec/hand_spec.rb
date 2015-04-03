@@ -3,12 +3,15 @@ require 'card'
 
 describe Hand do
 
-  let(:hand) { Hand.new(
-    [Card.new(:deuce, :clubs),
-     Card.new(:three, :clubs),
-     Card.new(:four, :clubs),
-     Card.new(:five, :spades),
-     Card.new(:seven, :clubs)]) }
+  let(:hand) do
+    Hand.new([
+      Card.new(:deuce, :clubs),
+      Card.new(:three, :clubs),
+      Card.new(:four, :clubs),
+      Card.new(:five, :spades),
+      Card.new(:seven, :clubs)
+    ])
+  end
 
   it "has 5 cards" do
     expect(hand.cards.all? { |card| card.is_a?(Card) }).to eq(true)
@@ -19,6 +22,7 @@ describe Hand do
 
     describe "#straight_flush?" do
 
+      #clean up
       let(:hand2) { Hand.new(
         [Card.new(:deuce, :clubs),
          Card.new(:three, :clubs),
@@ -28,6 +32,7 @@ describe Hand do
 
       it "returns true for a straight flush" do
         expect(hand2.straight_flush?).to eq(true)
+        expect(hand2).to be_straight_flush
       end
 
       it "return false if not a straight flush" do
@@ -185,7 +190,7 @@ describe Hand do
       it "pair beats no hand" do
         expect(hand2 > hand).to eq(true)
       end
-      
+
     end
 
 
