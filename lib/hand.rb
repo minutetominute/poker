@@ -18,8 +18,18 @@ class Hand
     @cards = cards
   end
 
-  def ranking
-    matches(self.strip_suits)
+  def <=>(other_hand)
+    self.ranking_index <=> other_hand.ranking_index
+  end
+
+  def ranking_index
+    POKER_HANDS.reverse.each do |poker_hand|
+      method_name = (poker_hand.to_s + "?").to_sym
+      if self.send(method_name)
+        return POKER_HANDS.index(poker_hand) + 1
+      end
+    end
+    0
   end
 
   def straight_flush?
