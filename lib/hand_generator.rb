@@ -13,7 +13,7 @@ def print_results
     puts 'let(:hand2) { Hand.new('
     puts '['
     value1.cards.each do |card|
-      puts "  Card.new(:#{card.value}, :#{card.suit})"
+      puts "  Card.new(:#{card.value}, :#{card.suit}),"
     end
   end
   puts '])}'

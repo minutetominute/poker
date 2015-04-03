@@ -39,7 +39,7 @@ class Hand
     matches.values.include?(4)
   end
 
-  def full_house?(nums)
+  def full_house?
     matches.values.include?(3) && matches.values.include?(2)
   end
 
