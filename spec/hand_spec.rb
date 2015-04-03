@@ -34,6 +34,10 @@ describe Hand do
         expect(hand.straight_flush?).to eq(false)
       end
 
+      it "straight flush beats no hand" do
+        expect(hand2 > hand).to eq(true)
+      end
+
     end
 
     describe "#straight?" do
@@ -50,6 +54,10 @@ describe Hand do
 
       it "return false if not a straight" do
         expect(hand.straight?).to eq(false)
+      end
+
+      it "straight beats no hand" do
+        expect(hand2 > hand).to eq(true)
       end
     end
 
@@ -68,6 +76,10 @@ describe Hand do
       it "return false if not a flush" do
         expect(hand.flush?).to eq(false)
       end
+
+      it "flush beats no hand" do
+        expect(hand2 > hand).to eq(true)
+      end
     end
 
     describe "#quad?" do
@@ -84,6 +96,10 @@ describe Hand do
 
       it "return false if not a 4 of a kind" do
         expect(hand.quad?).to eq(false)
+      end
+
+      it "4 of a kind beats no hand" do
+        expect(hand2 > hand).to eq(true)
       end
     end
 
@@ -102,6 +118,10 @@ describe Hand do
       it "return false if not full house" do
         expect(hand.full_house?).to eq(false)
       end
+
+      it "full house beats no hand" do
+        expect(hand2 > hand).to eq(true)
+      end
     end
 
     describe "#trip?" do
@@ -118,6 +138,10 @@ describe Hand do
 
       it "return false if not trip" do
         expect(hand.trip?).to eq(false)
+      end
+
+      it "3 of a kind beats no hand" do
+        expect(hand2 > hand).to eq(true)
       end
     end
 
@@ -136,6 +160,10 @@ describe Hand do
       it "return false if not a two_pair" do
         expect(hand.two_pair?).to eq(false)
       end
+
+      it "2 pair beats no hand" do
+        expect(hand2 > hand).to eq(true)
+      end
     end
 
     describe "#pair?" do
@@ -153,6 +181,11 @@ describe Hand do
       it "return false if not a pair" do
         expect(hand.pair?).to eq(false)
       end
+
+      it "pair beats no hand" do
+        expect(hand2 > hand).to eq(true)
+      end
+      
     end
 
 

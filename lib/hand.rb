@@ -3,13 +3,13 @@ class Hand
 
   include Comparable
 
-  POKER_HANDS = [:one_pair,
+  POKER_HANDS = [:pair,
                  :two_pair,
-                 :three_of_a_kind,
+                 :trip,
                  :straight,
                  :flush,
                  :full_house,
-                 :four_of_a_kind,
+                 :quad,
                  :straight_flush]
 
   attr_reader :cards
@@ -19,7 +19,14 @@ class Hand
   end
 
   def <=>(other_hand)
-    self.ranking_index <=> other_hand.ranking_index
+    if ranking_index == other_hand.ranking_index
+      tie_breaker(other_hand)
+    else
+      ranking_index <=> other_hand.ranking_index
+    end
+  end
+
+  def tie_breaker
   end
 
   def ranking_index
