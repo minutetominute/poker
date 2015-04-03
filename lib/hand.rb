@@ -26,14 +26,19 @@ class Hand
     end
   end
 
-  def tie_breaker
+  def tie_breaker(other_hand)
+
   end
 
   def ranking_index
+    POKER_HANDS.index(ranking) + 1
+  end
+
+  def ranking
     POKER_HANDS.reverse.each do |poker_hand|
       method_name = (poker_hand.to_s + "?").to_sym
       if self.send(method_name)
-        return POKER_HANDS.index(poker_hand) + 1
+        return poker_hand + 1
       end
     end
     0
