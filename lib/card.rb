@@ -45,6 +45,10 @@ class Card
     @suit = suit
   end
 
+  def poker_value
+    POKER_VALUE[value]
+  end
+
   def == (other_card)
     [value, suit] == [other_card.value, other_card.suit]
   end

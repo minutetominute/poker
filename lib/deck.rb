@@ -10,6 +10,7 @@ class Deck
 
   def shuffle
     self.cards = cards.shuffle
+    self
   end
 
   def all_cards
@@ -27,6 +28,7 @@ class Deck
     take(n)
   end
 
+  #
   def return(cards)
     self.cards.concat(cards)
   end
